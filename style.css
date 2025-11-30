@@ -457,3 +457,12 @@ textarea {
     padding-inline: 14px;
   }
 }
+/* Make tables scrollable on mobile */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  min-width: 700px; /* ensures table can scroll */
+}
