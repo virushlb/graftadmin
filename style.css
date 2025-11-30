@@ -476,3 +476,24 @@ textarea {
 #screen-requests {
   overflow-x: auto;
 }
+/* 🔥 FIX: Make admin requests table scroll horizontally on mobile */
+#requestsTable {
+  overflow-x: auto !important;
+  display: block;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+#requestsTable table {
+  min-width: 850px !important; /* force it to exceed phone width */
+  width: max-content !important;
+}
+
+/* Also make the parent allow scrolling */
+.screen {
+  overflow-x: hidden;
+}
+
+.main {
+  overflow-x: hidden;
+}
