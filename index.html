@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Graftmotion Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo-block">
+        <div class="logo-circle">
+          <img src="assets/logo.png" alt="Graftmotion logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand">Graftmotion</div>
+          <div class="tag">Studio dashboard</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-screen="overview">Overview</button>
+        <button class="nav-item" data-screen="portfolio">Portfolio</button>
+        <button class="nav-item" data-screen="requests">Requests</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="hint">Private panel — no login. Keep this link only for the owner.</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- OVERVIEW -->
+      <section class="screen screen-active" id="screen-overview">
+        <header class="topbar">
+          <h1>Overview</h1>
+          <p class="muted">Quick snapshot of what’s happening in the studio.</p>
+        </header>
+
+        <div class="cards-row">
+          <div class="card stat" id="stat-projects">
+            <div class="stat-label">Total projects</div>
+            <div class="stat-value">—</div>
+          </div>
+          <div class="card stat" id="stat-requests">
+            <div class="stat-label">Total requests</div>
+            <div class="stat-value">—</div>
+          </div>
+          <div class="card stat" id="stat-open">
+            <div class="stat-label">Open requests</div>
+            <div class="stat-value">—</div>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <h2 class="card-title">Latest projects</h2>
+            <div id="overview-projects" class="mini-list empty">
+              <p class="muted small">Projects you add in the Portfolio tab will appear here.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="card-title">Latest requests</h2>
+            <div id="overview-requests" class="mini-list empty">
+              <p class="muted small">When someone submits the form on the website, it will show up here.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section class="screen" id="screen-portfolio">
+        <header class="topbar">
+          <h1>Portfolio</h1>
+          <p class="muted">Add projects and thumbnails that will show on the public website.</p>
+        </header>
+
+        <div class="grid-2">
+          <form id="projectForm" class="card">
+            <h2 class="card-title">Add new project</h2>
+            <div class="field">
+              <label>Title</label>
+              <input type="text" name="title" placeholder="Project title" required>
+            </div>
+
+            <div class="field">
+              <label>Video link</label>
+              <input type="text" name="video" placeholder="YouTube / Drive / MP4 link" required>
+            </div>
+
+            <div class="field">
+              <label>Thumbnail image</label>
+              <input type="file" name="thumb" accept="image/*" required>
+              <p class="muted tiny">The file will be uploaded to Supabase storage and used on the website.</p>
+            </div>
+
+            <button class="btn" type="submit">Save project</button>
+            <div id="projectMsg" class="msg small"></div>
+          </form>
+
+          <div class="card">
+            <h2 class="card-title">Projects</h2>
+            <div id="projectsList" class="table-wrapper empty">
+              <p class="muted small">No projects yet. Add one using the form.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REQUESTS -->
+      <section class="screen" id="screen-requests">
+        <header class="topbar">
+          <h1>Requests</h1>
+          <p class="muted">These come from the “Start a project” form on the public website.</p>
+        </header>
+
+        <div class="card">
+          <div class="table-head-row">
+            <h2 class="card-title">All requests</h2>
+            <select id="statusFilter" class="status-filter">
+              <option value="all">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="in-progress">In progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <div id="requestsTable" class="table-wrapper empty">
+            <p class="muted small">When someone sends a project request, it will show here.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
