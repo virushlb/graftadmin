@@ -299,19 +299,21 @@ textarea {
 }
 
 /* TABLE */
+/* FORCE horizontal scroll on mobile */
 .table-wrapper {
-  margin-top: 8px;
-  border-radius: 12px;
-  background: rgba(5,5,7,0.9);
-  border: 1px solid rgba(255,255,255,0.06);
-  overflow: hidden;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  width: 100%;
+  display: block;
+  -webkit-overflow-scrolling: touch;
 }
 
+/* Make sure table is wider than the screen */
 .table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+  width: max-content !important;
+  min-width: 750px;
 }
+
 
 .table thead {
   background: rgba(255,255,255,0.02);
@@ -465,4 +467,12 @@ textarea {
 
 .table {
   min-width: 700px; /* ensures table can scroll */
+}
+/* Prevent main container from blocking scroll */
+.main {
+  overflow-x: hidden;
+}
+
+#screen-requests {
+  overflow-x: auto;
 }
